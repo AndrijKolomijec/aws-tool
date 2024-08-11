@@ -1,0 +1,21 @@
+{
+	"name": "AWS Tool",
+	"description": "Collection of tools for better AWS experience.",
+	"manifest_version": 3,
+	"version": "0.1.0",
+	"permissions": ["storage", "tabs", "webNavigation", "scripting"],
+	"host_permissions": ["https://*.awsapps.com/*", "https://*.amazon.com/*"],
+	"action": {
+		"default_popup": "index.html",
+		"default_title": "AWS Tool"
+	},
+	"background": {
+		"service_worker": "background.js"
+	},
+	"content_scripts": [
+		{
+			"matches": ["https://*.awsapps.com/*", "https://*.amazon.com/*"],
+			"js": ["changeCredsContent.js", "refreshRateExceededContent.js"]
+		}
+	]
+}
